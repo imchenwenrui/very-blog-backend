@@ -1,5 +1,7 @@
 # 项目技术栈
 
+该项目为个人博客网站，后端使用 Spring Boot + Spring Cloud Alibaba 微服务架构
+
 本项目技术栈：
 
 - Java 17
