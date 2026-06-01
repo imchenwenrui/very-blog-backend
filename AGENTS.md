@@ -3,29 +3,21 @@
 本项目技术栈：
 
 - Java 17
-- Spring Boot 2.7.x
-- Spring Cloud Alibaba 2021.x
-- Nacos
+- Spring Boot 3.2.12
+- Spring Cloud 2023.0.5
+- Spring Cloud Alibaba 2023.0.3.3
+- Nacos 2.4.3
 - OpenFeign
-- MyBatis Plus
+- MyBatis Plus 3.5.12
 - MySQL
-- Redis
+- Redis 7.4
 - Kafka
 - Maven
+- Elasticsearch 8.17.x
+- Hutool 5.8.x
+- Sa-Token 1.44
 
 生成代码时必须兼容以上版本。
-
-禁止使用 Spring Boot 3.x 特性。
-
-禁止使用 Jakarta 包。
-
-统一使用：
-
-javax.validation.*
-
-而非：
-
-jakarta.validation.*
 
 ---
 
@@ -62,23 +54,24 @@ jakarta.validation.*
 
 标准结构：
 
-user-service
+- very-common
+  - very-common-core
+  - very-common-web
+  - very-common-mybatis
+- very-gateway-service
 
-├── user-api
-
-└── user-server
-
-order-service
-
-├── order-api
-
-└── order-server
-
-system-service
-
-├── system-api
-
-└── system-server
+- very-user-service
+  - very-user-api
+  - very-user-server
+- very-content-service
+  - very-content-api
+  - very-content-server
+- very-interaction-service
+  - very-interaction-api
+  - very-interaction-server
+- very-file-service
+  - very-file-api
+  - very-file-server
 
 ---
 
