@@ -1,10 +1,12 @@
 package com.very.blog.user.controller;
 
+import com.very.blog.common.core.result.PageResult;
 import com.very.blog.common.core.result.Result;
 import com.very.blog.common.web.annotation.OperationLog;
 import com.very.blog.common.web.enums.OperationContentEnum;
 import com.very.blog.common.web.enums.OperationModuleEnum;
 import com.very.blog.user.dto.UserCreateDTO;
+import com.very.blog.user.dto.UserPageDTO;
 import com.very.blog.user.dto.UserUpdateDTO;
 import com.very.blog.user.service.UserService;
 import com.very.blog.user.vo.UserVO;
@@ -20,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 用户管理控制器
  */
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
     /**
@@ -70,5 +72,16 @@ public class UserController {
     @GetMapping("/{id}")
     public Result<UserVO> getById(@PathVariable Long id) {
         return Result.success(userService.getById(id));
+    }
+
+    /**
+     * 分页查询用户列表
+     *
+     * @param dto 用户分页查询入参
+     * @return 用户分页列表
+     */
+    @PostMapping("/page")
+    public Result<PageResult<UserVO>> page(@Valid @RequestBody UserPageDTO dto) {
+        return Result.success(userService.page(dto));
     }
 }

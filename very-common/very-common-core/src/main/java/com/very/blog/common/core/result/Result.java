@@ -1,12 +1,19 @@
 package com.very.blog.common.core.result;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Result<T> implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private Integer code;
@@ -14,15 +21,6 @@ public class Result<T> implements Serializable {
     private String message;
 
     private T data;
-
-    public Result() {
-    }
-
-    private Result(Integer code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
 
     public static <T> Result<T> success() {
         return new Result<>(0, "success", null);

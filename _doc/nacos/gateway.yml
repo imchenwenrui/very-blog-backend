@@ -8,28 +8,28 @@ spring:
         - id: user
           uri: lb://user
           predicates:
-            - Path=/admin/auth/**,/admin/users/**,/admin/roles/**,/admin/permissions/**,/blog/auth/**
+            - Path=/admin/auth/**,/admin/user/**,/admin/role/**,/admin/permission/**,/blog/auth/**
           filters:
             - StripPrefix=1
 
         - id: content
           uri: lb://content
           predicates:
-            - Path=/admin/articles/**,/admin/categories/**,/admin/tags/**,/blog/articles/**,/blog/categories/**,/blog/tags/**,/blog/archives/**
+            - Path=/admin/article/**,/admin/category/**,/admin/tag/**,/blog/article/**,/blog/category/**,/blog/tag/**,/blog/archive/**
           filters:
             - StripPrefix=1
 
         - id: interaction
           uri: lb://interaction
           predicates:
-            - Path=/admin/comments/**,/admin/messages/**,/blog/comments/**,/blog/likes/**,/blog/favorites/**,/blog/messages/**
+            - Path=/admin/comment/**,/admin/message/**,/blog/comment/**,/blog/like/**,/blog/favorite/**,/blog/message/**
           filters:
             - StripPrefix=1
 
         - id: file
           uri: lb://file
           predicates:
-            - Path=/admin/files/**,/blog/files/**
+            - Path=/admin/file/**,/blog/file/**
           filters:
             - StripPrefix=1
 

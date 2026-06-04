@@ -1,6 +1,8 @@
 package com.very.blog.user.service;
 
+import com.very.blog.common.core.result.PageResult;
 import com.very.blog.user.dto.RoleCreateDTO;
+import com.very.blog.user.dto.RolePageDTO;
 import com.very.blog.user.dto.RoleUpdateDTO;
 import com.very.blog.user.vo.RoleVO;
 
@@ -32,4 +34,12 @@ public interface RoleService {
      * @return 角色信息
      */
     RoleVO getById(Long id);
+
+    /**
+     * 分页查询角色列表
+     *
+     * @param dto 角色分页查询入参
+     * @return 角色分页列表
+     */
+    PageResult<RoleVO> page(RolePageDTO dto);
 }

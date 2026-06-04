@@ -23,7 +23,7 @@ import java.util.List;
  * 权限管理控制器
  */
 @RestController
-@RequestMapping("/permissions")
+@RequestMapping("/permission")
 public class PermissionController {
 
     /**

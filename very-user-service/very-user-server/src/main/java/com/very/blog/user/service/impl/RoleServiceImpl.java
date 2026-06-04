@@ -1,8 +1,11 @@
 package com.very.blog.user.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.very.blog.common.core.result.PageResult;
 import com.very.blog.user.convert.RoleConvert;
 import com.very.blog.user.dto.RoleCreateDTO;
+import com.very.blog.user.dto.RolePageDTO;
 import com.very.blog.user.dto.RoleUpdateDTO;
 import com.very.blog.user.entity.SysRole;
 import com.very.blog.user.enums.DeletedStatusEnum;
@@ -76,6 +79,28 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public RoleVO getById(Long id) {
         return RoleConvert.toVO(getEnabledEntity(id));
+    }
+
+    /**
+     * 分页查询角色列表
+     *
+     * @param dto 角色分页查询入参
+     * @return 角色分页列表
+     */
+    @Override
+    public PageResult<RoleVO> page(RolePageDTO dto) {
+        Page<SysRole> page = sysRoleMapper.selectPage(new Page<>(dto.getPageNum(), dto.getPageSize()),
+                Wrappers.<SysRole>lambdaQuery()
+                        .eq(SysRole::getDeleted, DeletedStatusEnum.NOT_DELETED.getCode())
+                        .and(dto.getKeyword() != null && !dto.getKeyword().isBlank(), wrapper -> wrapper
+                                .like(SysRole::getRoleCode, dto.getKeyword())
+                                .or()
+                                .like(SysRole::getRoleName, dto.getKeyword()))
+                        .orderByAsc(SysRole::getSortOrder)
+                        .orderByDesc(SysRole::getId));
+        return PageResult.of(page.getTotal(), page.getRecords().stream()
+                .map(RoleConvert::toVO)
+                .toList());
     }
 
     /**

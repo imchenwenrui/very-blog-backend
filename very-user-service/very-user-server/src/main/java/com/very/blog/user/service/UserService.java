@@ -1,6 +1,8 @@
 package com.very.blog.user.service;
 
+import com.very.blog.common.core.result.PageResult;
 import com.very.blog.user.dto.UserCreateDTO;
+import com.very.blog.user.dto.UserPageDTO;
 import com.very.blog.user.dto.UserUpdateDTO;
 import com.very.blog.user.vo.UserVO;
 
@@ -32,4 +34,12 @@ public interface UserService {
      * @return 用户信息
      */
     UserVO getById(Long id);
+
+    /**
+     * 分页查询用户列表
+     *
+     * @param dto 用户分页查询入参
+     * @return 用户分页列表
+     */
+    PageResult<UserVO> page(UserPageDTO dto);
 }

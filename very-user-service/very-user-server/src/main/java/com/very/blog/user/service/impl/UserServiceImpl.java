@@ -1,8 +1,11 @@
 package com.very.blog.user.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.very.blog.common.core.result.PageResult;
 import com.very.blog.user.convert.UserConvert;
 import com.very.blog.user.dto.UserCreateDTO;
+import com.very.blog.user.dto.UserPageDTO;
 import com.very.blog.user.dto.UserUpdateDTO;
 import com.very.blog.user.entity.SysUser;
 import com.very.blog.user.enums.DeletedStatusEnum;
@@ -86,6 +89,27 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO getById(Long id) {
         return UserConvert.toVO(getEnabledEntity(id));
+    }
+
+    /**
+     * 分页查询用户列表
+     *
+     * @param dto 用户分页查询入参
+     * @return 用户分页列表
+     */
+    @Override
+    public PageResult<UserVO> page(UserPageDTO dto) {
+        Page<SysUser> page = sysUserMapper.selectPage(new Page<>(dto.getPageNum(), dto.getPageSize()),
+                Wrappers.<SysUser>lambdaQuery()
+                        .eq(SysUser::getDeleted, DeletedStatusEnum.NOT_DELETED.getCode())
+                        .and(dto.getKeyword() != null && !dto.getKeyword().isBlank(), wrapper -> wrapper
+                                .like(SysUser::getUsername, dto.getKeyword())
+                                .or()
+                                .like(SysUser::getNickname, dto.getKeyword()))
+                        .orderByDesc(SysUser::getId));
+        return PageResult.of(page.getTotal(), page.getRecords().stream()
+                .map(UserConvert::toVO)
+                .toList());
     }
 
     /**

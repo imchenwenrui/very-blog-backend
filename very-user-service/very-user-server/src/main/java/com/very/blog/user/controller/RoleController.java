@@ -1,10 +1,12 @@
 package com.very.blog.user.controller;
 
+import com.very.blog.common.core.result.PageResult;
 import com.very.blog.common.core.result.Result;
 import com.very.blog.common.web.annotation.OperationLog;
 import com.very.blog.common.web.enums.OperationContentEnum;
 import com.very.blog.common.web.enums.OperationModuleEnum;
 import com.very.blog.user.dto.RoleCreateDTO;
+import com.very.blog.user.dto.RolePageDTO;
 import com.very.blog.user.dto.RoleUpdateDTO;
 import com.very.blog.user.service.RoleService;
 import com.very.blog.user.vo.RoleVO;
@@ -20,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 角色管理控制器
  */
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/role")
 public class RoleController {
 
     /**
@@ -70,5 +72,16 @@ public class RoleController {
     @GetMapping("/{id}")
     public Result<RoleVO> getById(@PathVariable Long id) {
         return Result.success(roleService.getById(id));
+    }
+
+    /**
+     * 分页查询角色列表
+     *
+     * @param dto 角色分页查询入参
+     * @return 角色分页列表
+     */
+    @PostMapping("/page")
+    public Result<PageResult<RoleVO>> page(@Valid @RequestBody RolePageDTO dto) {
+        return Result.success(roleService.page(dto));
     }
 }
