@@ -1,10 +1,1 @@
-server:
-  port: 8104
-
-spring:
-  application:
-    name: very-file-service
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
+spring.profiles.active: prod

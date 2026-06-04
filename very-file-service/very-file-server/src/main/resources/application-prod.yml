@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: file
+  config:
+    import:
+      - nacos:mysql
+      - nacos:file
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:38848
+        namespace: 0fce12ca-1501-4c97-b93b-36248fad1762
+        group: DEFAULT_GROUP
+        file-extension: yml
+        username: nacos
+        password: nacos
+      discovery:
+        server-addr: 127.0.0.1:38848
+        namespace: 0fce12ca-1501-4c97-b93b-36248fad1762
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos

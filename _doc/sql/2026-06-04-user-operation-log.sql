@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS sys_operation_log (
+    id BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    operator_id BIGINT NULL COMMENT '操作人ID',
+    operator_name VARCHAR(64) NULL COMMENT '操作人名称',
+    operation_time DATETIME NOT NULL COMMENT '操作时间',
+    operation_module VARCHAR(64) NOT NULL COMMENT '操作模块编码',
+    operation_module_name VARCHAR(64) NOT NULL COMMENT '操作模块名称',
+    operation_content VARCHAR(64) NOT NULL COMMENT '操作内容编码',
+    operation_content_name VARCHAR(64) NOT NULL COMMENT '操作内容名称',
+    request_method VARCHAR(16) NOT NULL COMMENT '请求方法',
+    request_url VARCHAR(512) NOT NULL COMMENT '请求地址',
+    request_body TEXT NULL COMMENT '请求参数',
+    client_ip VARCHAR(64) NULL COMMENT '客户端IP',
+    handler_method VARCHAR(256) NULL COMMENT '处理方法',
+    operation_status TINYINT NOT NULL COMMENT '操作状态',
+    error_message VARCHAR(1024) NULL COMMENT '错误信息',
+    cost_time BIGINT NULL COMMENT '接口耗时',
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '后台操作日志表';

@@ -1,0 +1,51 @@
+server:
+  port: 18100
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri: lb://user
+          predicates:
+            - Path=/admin/auth/**,/admin/users/**,/admin/roles/**,/admin/permissions/**,/blog/auth/**
+          filters:
+            - StripPrefix=1
+
+        - id: content
+          uri: lb://content
+          predicates:
+            - Path=/admin/articles/**,/admin/categories/**,/admin/tags/**,/blog/articles/**,/blog/categories/**,/blog/tags/**,/blog/archives/**
+          filters:
+            - StripPrefix=1
+
+        - id: interaction
+          uri: lb://interaction
+          predicates:
+            - Path=/admin/comments/**,/admin/messages/**,/blog/comments/**,/blog/likes/**,/blog/favorites/**,/blog/messages/**
+          filters:
+            - StripPrefix=1
+
+        - id: file
+          uri: lb://file
+          predicates:
+            - Path=/admin/files/**,/blog/files/**
+          filters:
+            - StripPrefix=1
+
+very:
+  gateway:
+    auth:
+      white-list:
+        - /admin/auth/login
+        - /blog/**
+        - /favicon.ico
+
+sa-token:
+  token-name: satoken
+  timeout: 2592000
+  active-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: uuid
+  is-log: false
