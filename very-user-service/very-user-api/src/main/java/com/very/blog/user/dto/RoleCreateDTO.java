@@ -1,5 +1,6 @@
 package com.very.blog.user.dto;
 
+import com.very.blog.user.enums.EnableStatusEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class RoleCreateDTO implements Serializable {
     private String roleName;
 
     /**
-     * 角色状态
+     * 角色状态，取值来源于 {@link EnableStatusEnum}
      */
     @NotNull(message = "角色状态不能为空")
     private Integer status;

@@ -1,5 +1,7 @@
 package com.very.blog.user.vo;
 
+import com.very.blog.user.enums.EnableStatusEnum;
+import com.very.blog.user.enums.PermissionTypeEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -38,7 +40,7 @@ public class PermissionTreeVO implements Serializable {
     private String permissionName;
 
     /**
-     * 权限类型
+     * 权限类型，取值来源于 {@link PermissionTypeEnum}
      */
     private Integer permissionType;
 
@@ -53,7 +55,7 @@ public class PermissionTreeVO implements Serializable {
     private String httpMethod;
 
     /**
-     * 权限状态
+     * 权限状态，取值来源于 {@link EnableStatusEnum}
      */
     private Integer status;
 

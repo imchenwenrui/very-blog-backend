@@ -26,7 +26,22 @@ public enum OperationModuleEnum {
     /**
      * 权限管理
      */
-    PERMISSION("PERMISSION", "权限管理");
+    PERMISSION("PERMISSION", "权限管理"),
+
+    /**
+     * 文章管理
+     */
+    ARTICLE("ARTICLE", "文章管理"),
+
+    /**
+     * 分类管理
+     */
+    CATEGORY("CATEGORY", "分类管理"),
+
+    /**
+     * 标签管理
+     */
+    TAG("TAG", "标签管理");
 
     /**
      * 枚举编码

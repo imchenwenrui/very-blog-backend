@@ -1,5 +1,6 @@
 package com.very.blog.user.vo;
 
+import com.very.blog.user.enums.EnableStatusEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -32,7 +33,7 @@ public class RoleVO implements Serializable {
     private String roleName;
 
     /**
-     * 角色状态
+     * 角色状态，取值来源于 {@link EnableStatusEnum}
      */
     private Integer status;
 

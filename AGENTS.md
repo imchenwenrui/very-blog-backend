@@ -27,7 +27,6 @@
 
 - 优先保证代码可维护性
 - 类、方法、变量都要有完整的 javadoc 注释，方法还需要有入参和出参的注释，包括方法体内，核心业务逻辑也需要有注释
-- 不允许生成伪代码
 - 不允许省略关键实现
 - 优先使用 Lombok
 - 无参构造和全参构造使用注解 @NoArgsConstructor 和 @AllArgsConstructor
@@ -44,44 +43,6 @@
 5. 优先复用已有公共模块
 
 禁止重复实现已有功能。
-
----
-
-## 最小修改原则
-
-仅修改与需求相关代码。
-
-禁止：
-
-- 大规模重构
-- 调整包结构
-- 修改无关代码
-- 修改无关格式
-
----
-
-# 微服务结构
-
-标准结构：
-
-- very-common
-  - very-common-core
-  - very-common-web
-  - very-common-mybatis
-- very-gateway-service
-
-- very-user-service
-  - very-user-api
-  - very-user-server
-- very-content-service
-  - very-content-api
-  - very-content-server
-- very-interaction-service
-  - very-interaction-api
-  - very-interaction-server
-- very-file-service
-  - very-file-api
-  - very-file-server
 
 ---
 
@@ -200,6 +161,29 @@ OrderEntity
 Entity仅用于数据持久化。
 
 禁止返回给前端。
+
+---
+
+# 枚举规范
+
+DTO、VO、Entity 中如果字段取值来源于枚举类，必须在字段 Javadoc 中使用 `{@link}` 标明对应枚举类。
+
+示例：
+
+```java
+/**
+ * 文章状态，取值来源于 {@link ArticleStatusEnum}
+ */
+private Integer articleStatus;
+```
+
+禁止在字段注释中重复维护枚举值列表，避免枚举调整后注释不同步。
+
+数据库字段注释只描述中文业务含义，不需要写 Java 枚举类名。
+
+枚举类的 `code` 统一从 `0` 开始，后续值按 `1、2、3...` 递增。
+
+枚举 `code` 一旦入库，不允许随意修改；新增枚举值优先追加到末尾，避免影响历史数据。
 
 ---
 
@@ -361,74 +345,3 @@ GlobalExceptionHandler
 try-catch后仅打印日志。
 
 禁止吞异常。
-
----
-
-# 接口规范
-
-新增：
-
-createUser
-
-修改：
-
-updateUser
-
-删除：
-
-deleteUser
-
-批量删除：
-
-batchDeleteUsers
-
-详情：
-
-getUserDetail
-
-分页：
-
-pageUsers
-
-列表：
-
-listUsers
-
----
-
-# AI助手执行规范
-
-收到需求后：
-
-1. 分析现有代码结构
-2. 优先复用已有实现
-3. 保持现有代码风格
-4. 不新增重复DTO
-5. 不新增重复VO
-6. 不新增重复Service
-7. 不进行无关重构
-
-输出前检查：
-
-- Java17兼容
-- SpringBoot2.7兼容
-- DTO规范
-- VO规范
-- Feign规范
-- 事务规范
-- 日志规范
-- Mapper规范
-
-修改完成后必须说明：
-
-修改文件：
-
-- UserController.java
-- UserService.java
-- UserServiceImpl.java
-
-修改内容：
-
-1. 新增用户分页查询
-2. 增加状态筛选
-3. 补充参数校验

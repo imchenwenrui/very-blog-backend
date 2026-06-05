@@ -3,6 +3,8 @@ package com.very.blog.user.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.very.blog.user.enums.DeletedStatusEnum;
+import com.very.blog.user.enums.EnableStatusEnum;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -31,7 +33,7 @@ public class SysRole {
     private String roleName;
 
     /**
-     * 状态
+     * 状态，取值来源于 {@link EnableStatusEnum}
      */
     private Integer status;
 
@@ -66,7 +68,7 @@ public class SysRole {
     private LocalDateTime updateTime;
 
     /**
-     * 删除标识
+     * 删除标识，取值来源于 {@link DeletedStatusEnum}
      */
     private Integer deleted;
 }

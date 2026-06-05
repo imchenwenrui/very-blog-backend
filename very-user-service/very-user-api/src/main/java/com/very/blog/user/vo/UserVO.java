@@ -1,5 +1,7 @@
 package com.very.blog.user.vo;
 
+import com.very.blog.user.enums.EnableStatusEnum;
+import com.very.blog.user.enums.UserTypeEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -47,12 +49,12 @@ public class UserVO implements Serializable {
     private String phone;
 
     /**
-     * 用户类型
+     * 用户类型，取值来源于 {@link UserTypeEnum}
      */
     private Integer userType;
 
     /**
-     * 用户状态
+     * 用户状态，取值来源于 {@link EnableStatusEnum}
      */
     private Integer status;
 

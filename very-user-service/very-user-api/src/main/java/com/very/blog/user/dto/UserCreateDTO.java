@@ -1,5 +1,7 @@
 package com.very.blog.user.dto;
 
+import com.very.blog.user.enums.EnableStatusEnum;
+import com.very.blog.user.enums.UserTypeEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -53,13 +55,13 @@ public class UserCreateDTO implements Serializable {
     private String phone;
 
     /**
-     * 用户类型
+     * 用户类型，取值来源于 {@link UserTypeEnum}
      */
     @NotNull(message = "用户类型不能为空")
     private Integer userType;
 
     /**
-     * 用户状态
+     * 用户状态，取值来源于 {@link EnableStatusEnum}
      */
     @NotNull(message = "用户状态不能为空")
     private Integer status;

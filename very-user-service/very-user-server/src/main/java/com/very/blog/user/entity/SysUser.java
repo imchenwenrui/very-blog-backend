@@ -3,6 +3,9 @@ package com.very.blog.user.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.very.blog.user.enums.DeletedStatusEnum;
+import com.very.blog.user.enums.EnableStatusEnum;
+import com.very.blog.user.enums.UserTypeEnum;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -51,12 +54,12 @@ public class SysUser {
     private String phone;
 
     /**
-     * 用户类型
+     * 用户类型，取值来源于 {@link UserTypeEnum}
      */
     private Integer userType;
 
     /**
-     * 状态
+     * 状态，取值来源于 {@link EnableStatusEnum}
      */
     private Integer status;
 
@@ -96,7 +99,7 @@ public class SysUser {
     private LocalDateTime updateTime;
 
     /**
-     * 删除标识
+     * 删除标识，取值来源于 {@link DeletedStatusEnum}
      */
     private Integer deleted;
 }

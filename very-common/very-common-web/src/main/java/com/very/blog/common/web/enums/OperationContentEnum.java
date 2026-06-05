@@ -31,7 +31,17 @@ public enum OperationContentEnum {
     /**
      * 退出登录
      */
-    LOGOUT("LOGOUT", "退出登录");
+    LOGOUT("LOGOUT", "退出登录"),
+
+    /**
+     * 发布
+     */
+    PUBLISH("PUBLISH", "发布"),
+
+    /**
+     * 下线
+     */
+    OFFLINE("OFFLINE", "下线");
 
     /**
      * 枚举编码

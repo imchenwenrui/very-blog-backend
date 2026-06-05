@@ -1,5 +1,8 @@
 package com.very.blog.common.web.log;
 
+import com.very.blog.common.web.enums.OperationContentEnum;
+import com.very.blog.common.web.enums.OperationModuleEnum;
+import com.very.blog.common.web.enums.OperationStatusEnum;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -26,22 +29,22 @@ public class OperationLogContext {
     private LocalDateTime operationTime;
 
     /**
-     * 操作模块编码
+     * 操作模块编码，取值来源于 {@link OperationModuleEnum}
      */
     private String operationModule;
 
     /**
-     * 操作模块名称
+     * 操作模块名称，取值来源于 {@link OperationModuleEnum}
      */
     private String operationModuleName;
 
     /**
-     * 操作内容编码
+     * 操作内容编码，取值来源于 {@link OperationContentEnum}
      */
     private String operationContent;
 
     /**
-     * 操作内容名称
+     * 操作内容名称，取值来源于 {@link OperationContentEnum}
      */
     private String operationContentName;
 
@@ -71,7 +74,7 @@ public class OperationLogContext {
     private String handlerMethod;
 
     /**
-     * 操作状态
+     * 操作状态，取值来源于 {@link OperationStatusEnum}
      */
     private Integer operationStatus;
 

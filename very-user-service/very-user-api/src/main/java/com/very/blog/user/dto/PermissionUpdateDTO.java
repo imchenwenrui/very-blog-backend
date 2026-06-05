@@ -1,5 +1,7 @@
 package com.very.blog.user.dto;
 
+import com.very.blog.user.enums.EnableStatusEnum;
+import com.very.blog.user.enums.PermissionTypeEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -41,7 +43,7 @@ public class PermissionUpdateDTO implements Serializable {
     private String permissionName;
 
     /**
-     * 权限类型
+     * 权限类型，取值来源于 {@link PermissionTypeEnum}
      */
     @NotNull(message = "权限类型不能为空")
     private Integer permissionType;
@@ -57,7 +59,7 @@ public class PermissionUpdateDTO implements Serializable {
     private String httpMethod;
 
     /**
-     * 权限状态
+     * 权限状态，取值来源于 {@link EnableStatusEnum}
      */
     @NotNull(message = "权限状态不能为空")
     private Integer status;
