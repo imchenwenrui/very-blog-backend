@@ -11,12 +11,12 @@ public enum OperationStatusEnum {
     /**
      * 成功
      */
-    SUCCESS(1, "成功"),
+    SUCCESS(0, "成功"),
 
     /**
      * 失败
      */
-    FAIL(2, "失败");
+    FAIL(1, "失败");
 
     /**
      * 枚举编码

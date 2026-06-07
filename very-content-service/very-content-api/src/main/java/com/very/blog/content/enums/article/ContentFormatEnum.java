@@ -11,12 +11,12 @@ public enum ContentFormatEnum {
     /**
      * Markdown
      */
-    MARKDOWN(1, "Markdown"),
+    MARKDOWN(0, "Markdown"),
 
     /**
      * HTML
      */
-    HTML(2, "HTML");
+    HTML(1, "HTML");
 
     /**
      * 枚举编码

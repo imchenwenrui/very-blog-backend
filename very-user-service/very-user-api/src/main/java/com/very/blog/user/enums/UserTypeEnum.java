@@ -11,12 +11,12 @@ public enum UserTypeEnum {
     /**
      * 管理员
      */
-    ADMIN(1, "管理员"),
+    ADMIN(0, "管理员"),
 
     /**
      * 普通用户
      */
-    NORMAL(2, "普通用户");
+    NORMAL(1, "普通用户");
 
     /**
      * 枚举编码

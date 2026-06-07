@@ -11,17 +11,17 @@ public enum PermissionTypeEnum {
     /**
      * 菜单
      */
-    MENU(1, "菜单"),
+    MENU(0, "菜单"),
 
     /**
      * 按钮
      */
-    BUTTON(2, "按钮"),
+    BUTTON(1, "按钮"),
 
     /**
      * 接口
      */
-    API(3, "接口");
+    API(2, "接口");
 
     /**
      * 枚举编码

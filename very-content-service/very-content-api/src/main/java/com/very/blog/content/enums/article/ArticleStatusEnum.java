@@ -11,17 +11,17 @@ public enum ArticleStatusEnum {
     /**
      * 草稿
      */
-    DRAFT(1, "草稿"),
+    DRAFT(0, "草稿"),
 
     /**
      * 已发布
      */
-    PUBLISHED(2, "已发布"),
+    PUBLISHED(1, "已发布"),
 
     /**
      * 已下线
      */
-    OFFLINE(3, "已下线");
+    OFFLINE(2, "已下线");
 
     /**
      * 枚举编码
